@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estudio Chucky</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fuente fuerte -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <!-- CONTENEDOR EFECTO RASGADO -->
+    <div class="torn-container">
+
+      <!-- Definición de filtros y máscaras SVG (Invisible) -->
+      <svg style="position: absolute; width: 0; height: 0; overflow: hidden;">
+        <defs>
+          <!-- Filtro de textura rugosa (más sutil) -->
+          <filter id="tear-filter" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="3" seed="2" result="noise" />
+            <!-- Escala más baja = rasgado más sutil -->
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+
+          <!-- MÁSCARA PRINCIPAL -->
+          <mask id="torn-mask-premium" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+            <!-- Fondo blanco = área visible -->
+            <rect x="0" y="0" width="1" height="1" fill="white" />
+
+            <!-- FORMA BASE (sin filtro en los bordes superiores/laterales) -->
+            <path d="
+        M0,0
+        L1,0
+        L1,0.82
+        C0.98,0.84, 0.95,0.91, 0.92,0.86
+        C0.89,0.81, 0.86,0.94, 0.82,0.87
+        C0.78,0.80, 0.74,0.93, 0.70,0.85
+        C0.66,0.77, 0.62,0.96, 0.57,0.84
+        C0.52,0.72, 0.47,0.89, 0.42,0.81
+        C0.37,0.73, 0.32,0.95, 0.27,0.86
+        C0.22,0.77, 0.17,0.92, 0.12,0.83
+        C0.07,0.74, 0.03,0.88, 0,0.82
+        L0,0 Z
+      " fill="black" />
+
+            <!-- CAPA DE RASPADURA - Solo aplica filtro al borde inferior -->
+            <path d="
+        M0,0.82
+        L1,0.82
+        L1,0.85
+        C0.98,0.87, 0.95,0.94, 0.92,0.89
+        C0.89,0.84, 0.86,0.97, 0.82,0.90
+        C0.78,0.83, 0.74,0.96, 0.70,0.88
+        C0.66,0.80, 0.62,0.99, 0.57,0.87
+        C0.52,0.75, 0.47,0.92, 0.42,0.84
+        C0.37,0.76, 0.32,0.98, 0.27,0.89
+        C0.22,0.80, 0.17,0.95, 0.12,0.86
+        C0.07,0.77, 0.03,0.91, 0,0.85
+        L0,0.82 Z
+      " fill="black" filter="url(#tear-filter)" />
+          </mask>
+        </defs>
+      </svg>
+
+      <!-- Fondo blanco que actúa como el borde fibroso -->
+      <div class="torn-paper-back"></div>
+
+      <!-- Imagen principal -->
+      <div class="hero-image">
+        <img src="photo-1724343163782-52276ca2e6c2.avif" alt="Tatuaje artístico">
+      </div>
+    </div>
+
+
+
+    <!-- CONTENIDO -->
+    <div class="hero-content">
+      <h1>Estudio Chucky</h1>
+      <h2>Diseños exclusivos</h2>
+
+      <p>
+        Arte en piel con identidad propia. Tatuajes personalizados,
+        negros profundos y detalles que cuentan historias.
+      </p>
+
+      <a href="#" class="cta">Consultame!</a>
+    </div>
+
+  </section>
+
+
+</body>
+
+</html>
