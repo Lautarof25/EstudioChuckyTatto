@@ -162,3 +162,168 @@ body {
 .cta:hover::after {
   width: 100%;
 }
+
+/* GALLERY SECTION */
+.gallery-section {
+  padding: 6rem 0;
+  background-color: #0d0d0f;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-container {
+  width: 100%;
+  max-width: 1400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  gap: 40px;
+  /* Centrado perfecto: (100% - ancho del item) / 2 */
+  padding: 60px calc(50% - 150px);
+  width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* BOTONES DE NAVEGACIÓN */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.nav-btn:hover {
+  background: rgba(255, 79, 163, 0.2);
+  border-color: rgba(255, 79, 163, 0.5);
+  box-shadow: 0 0 15px rgba(255, 79, 163, 0.3);
+}
+
+.nav-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.nav-btn.prev {
+  left: 40px;
+}
+
+.nav-btn.next {
+  right: 40px;
+}
+
+.carousel-item {
+  cursor: pointer;
+  flex: 0 0 300px;
+  scroll-snap-align: center;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.6s ease,
+    filter 0.6s ease;
+  position: relative;
+  /* Efecto lateral: un poco más grande y desvanecido */
+  transform: scale(1.1);
+  opacity: 0.5;
+  filter: blur(2px) grayscale(0.4);
+  z-index: 1;
+}
+
+.carousel-item.active {
+  /* Central: un poco más pequeña pero nítida y brillante */
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0) grayscale(0);
+  z-index: 2;
+}
+
+.gallery-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: border 0.6s ease, box-shadow 0.6s ease;
+  display: block;
+}
+
+/* Destaque para el activo */
+.carousel-item.active .gallery-img {
+  border: 2px solid rgba(255, 79, 163, 0.6);
+  box-shadow: 0 0 30px rgba(255, 79, 163, 0.2), 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* MODO MOBILE */
+@media (max-width: 768px) {
+  .nav-btn {
+    display: none;
+  }
+
+  .gallery-section {
+    padding: 4rem 0;
+  }
+
+  .gallery-title {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .carousel-track {
+    gap: 0;
+    /* Usamos un padding más generoso para empujar las laterales al centro */
+    padding: 30px 15%;
+  }
+
+  .carousel-item {
+    /* Reducimos el ancho significativamente para que las laterales entren */
+    flex: 0 0 65vw;
+  }
+
+  .carousel-item:not(.active) {
+    transform: scale(0.85);
+    opacity: 0.6;
+    filter: blur(1px) grayscale(0.2);
+  }
+
+  .carousel-item.active {
+    transform: scale(1);
+  }
+}

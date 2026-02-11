@@ -76,7 +76,7 @@
 
       <!-- Imagen principal -->
       <div class="hero-image">
-        <img src="photo-1724343163782-52276ca2e6c2.avif" alt="Tatuaje artístico">
+        <img src="photo.avif" alt="Tatuaje artístico">
       </div>
     </div>
 
@@ -96,6 +96,101 @@
     </div>
 
   </section>
+
+  <section class="gallery-section" id="galeria">
+    <h2 class="gallery-title">Sesiones Recientes</h2>
+
+    <div class="carousel-container">
+      <button class="nav-btn prev" id="prevBtn" aria-label="Anterior">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+      </button>
+
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-item">
+          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+        </div>
+        <div class="carousel-item">
+          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+        </div>
+        <div class="carousel-item active">
+          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+        </div>
+        <div class="carousel-item">
+          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+        </div>
+        <div class="carousel-item">
+          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+        </div>
+      </div>
+
+      <button class="nav-btn next" id="nextBtn" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const items = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    const updateCarousel = () => {
+      const trackRect = track.getBoundingClientRect();
+      const trackCenter = trackRect.left + trackRect.width / 2;
+
+      items.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.left + itemRect.width / 2;
+        const distanceFromCenter = Math.abs(trackCenter - itemCenter);
+
+        if (distanceFromCenter < itemRect.width / 2) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    };
+
+    const scrollToItem = (index) => {
+      const item = items[index];
+      const scrollPos = item.offsetLeft - (track.offsetWidth / 2) + (item.offsetWidth / 2);
+      track.scrollTo({
+        left: scrollPos,
+        behavior: 'smooth'
+      });
+    };
+
+    // Navegación por flechas
+    prevBtn.addEventListener('click', () => {
+      const activeIdx = Array.from(items).findIndex(i => i.classList.contains('active'));
+      if (activeIdx > 0) scrollToItem(activeIdx - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const activeIdx = Array.from(items).findIndex(i => i.classList.contains('active'));
+      if (activeIdx < items.length - 1) scrollToItem(activeIdx + 1);
+    });
+
+    // Click en ítem para centrarlo
+    items.forEach((item, index) => {
+      item.addEventListener('click', () => scrollToItem(index));
+    });
+
+    track.addEventListener('scroll', updateCarousel);
+    window.addEventListener('load', () => {
+      const activeItem = document.querySelector('.carousel-item.active');
+      if (activeItem) {
+        const scrollPos = activeItem.offsetLeft - (track.offsetWidth / 2) + (activeItem.offsetWidth / 2);
+        track.scrollLeft = scrollPos;
+      }
+      updateCarousel();
+    });
+  </script>
 
 
 </body>
