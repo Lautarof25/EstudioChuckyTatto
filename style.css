@@ -15,43 +15,61 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-/* CONTENEDOR EFECTO RASGADO */
-.torn-container {
   position: relative;
-  /* Altura total que ocupa la foto + el borde */
-  height: 48vh;
-  /* Espacio para que el jagged edge no se corte */
-  margin-bottom: -1px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #1a1b26 0%, #0d0d0f 100%);
 }
 
-/* Variable con el patrón de rasgado para reutilizar */
-:root {
-  --torn-polygon: polygon(0% 0%, 100% 0%, 100% 88%,
-      99% 93%, 98% 87%, 96% 94%, 95% 88%, 93% 95%, 91% 87%, 90% 93%, 88% 86%,
-      86% 94%, 85% 88%, 83% 96%, 81% 85%, 80% 93%, 78% 87%, 76% 95%, 75% 86%,
-      73% 92%, 71% 85%, 70% 95%, 68% 86%, 66% 93%, 65% 88%, 63% 96%, 61% 87%,
-      60% 94%, 58% 86%, 56% 93%, 55% 88%, 53% 95%, 51% 85%, 50% 94%, 48% 87%,
-      46% 92%, 45% 86%, 43% 95%, 41% 87%, 40% 93%, 38% 86%, 36% 96%, 35% 88%,
-      33% 93%, 31% 86%, 30% 95%, 28% 87%, 26% 94%, 25% 88%, 23% 96%, 21% 85%,
-      20% 93%, 18% 87%, 16% 95%, 15% 86%, 13% 92%, 11% 85%, 10% 96%, 8% 87%,
-      6% 94%, 5% 88%, 3% 95%, 1% 86%, 0% 93%);
-}
-
-/* FONDO BLANCO (Actúa como borde/fibra) */
-.torn-paper-back {
+.stars-container {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ffffff;
-  /* Aplicamos el mismo recorte pero desplazado hacia abajo */
-  clip-path: var(--torn-polygon);
-  /* Transformación para que asome por debajo */
-  transform: translateY(6px) scaleY(1.02);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   z-index: 1;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.2;
+  box-shadow: 0 0 2px #fff;
+}
+
+/* CONTENEDOR EFECTO FRACTURA */
+.fracture-container {
+  position: relative;
+  /* Altura total que ocupa la foto */
+  height: 48vh;
+  margin-bottom: 0;
+  overflow: visible;
+}
+
+/* FRACTURE LINE EFFECT */
+.fracture-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.fracture-line {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.5;
+}
+
+.fracture-glow-layer {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 6;
+  opacity: 0.4;
+  filter: blur(4px);
 }
 
 /* IMAGEN PRINCIPAL */
@@ -63,10 +81,16 @@ body {
   bottom: 0;
   overflow: hidden;
   z-index: 2;
-  /* Recorte exacto */
-  clip-path: var(--torn-polygon);
-  /* Sombra interna para dar volumen al papel sobre la fibra blanca */
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
+  /* Se aplicará el recorte via CSS mask o el path del SVG */
+  -webkit-mask-image: url(#fracture-mask);
+  mask-image: url(#fracture-mask);
+}
+
+@media (min-width: 768px) {
+  .hero-image {
+    -webkit-mask-image: url(#fracture-mask-vertical);
+    mask-image: url(#fracture-mask-vertical);
+  }
 }
 
 .hero-image img {
@@ -108,6 +132,58 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 4;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .fracture-container {
+    height: 100vh;
+    flex: 0 0 55%;
+    /* Ocupa el 55% de la pantalla a la izquierda */
+    order: 1;
+    /* Imagen a la izquierda */
+    margin-bottom: 0;
+  }
+
+  .hero-content {
+    flex: 1;
+    order: 2;
+    /* Texto a la derecha */
+    text-align: left;
+    padding: 4rem 6rem 4rem 2rem;
+    background: transparent;
+  }
+
+  .fracture-divider.horizontal {
+    display: none;
+  }
+
+  .fracture-divider.vertical {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 4.5rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .fracture-divider.vertical {
+    display: none;
+  }
 }
 
 .hero-content h1 {
