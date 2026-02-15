@@ -10,6 +10,7 @@ body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 /* HERO */
@@ -44,85 +45,67 @@ body {
 .fracture-container {
   position: relative;
   /* Altura reducida en mobile para dejar espacio al texto */
-  height: 40vh;
+  height: 30vh;
   margin-bottom: 0;
-  overflow: visible;
-}
-
-/* FRACTURE LINE EFFECT */
-.fracture-divider {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.fracture-line {
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 2.5;
-}
-
-.fracture-glow-layer {
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 6;
-  opacity: 0.4;
-  filter: blur(4px);
-}
-
-/* IMAGEN PRINCIPAL */
-.hero-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   overflow: hidden;
-  z-index: 2;
-  /* Se aplicará el recorte via CSS mask o el path del SVG */
-  -webkit-mask-image: url(#fracture-mask);
-  mask-image: url(#fracture-mask);
 }
 
-@media (min-width: 768px) {
+
+
+/* IMAGEN PRINCIPAL CON MÁSCARA PNG */
+.hero-image {
+  /* Dimensiones responsive */
+  height: 100vh;
+  width: auto;
+  max-width: 500px;
+
+  /* Mantener proporción de la silueta */
+  aspect-ratio: 3 / 5;
+
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 780px) {
   .hero-image {
-    -webkit-mask-image: url(#fracture-mask-vertical);
-    mask-image: url(#fracture-mask-vertical);
+    width: 95vw;
+    max-width: none;
   }
 }
 
+/* Imagen con máscara */
 .hero-image img {
   width: 100%;
   height: 100%;
+
+  /* Máscara aplicada a la imagen - Desktop */
+  -webkit-mask-image: url('fondopng.svg');
+  mask-image: url('fondopng.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: left top;
+  mask-position: left top;
+
   object-fit: cover;
-  filter: brightness(0.65) contrast(1.1);
+  object-position: center;
   display: block;
 }
 
-.art-divider {
-  width: 100%;
-  height: 40px;
-  position: relative;
-  /* Superposición ligera sobre el clip-path */
-  margin-top: -30px;
-  z-index: 2;
-  pointer-events: none;
+/* Máscara diferente para mobile */
+@media (max-width: 780px) {
+  .hero-image img {
+    -webkit-mask-image: url('fondopngMobile.svg');
+    mask-image: url('fondopngMobile.svg');
+  }
+
+  .fracture-container {
+    filter: drop-shadow(0px 5px 1px rgba(255, 255, 255, 1));
+  }
 }
 
-.divider-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.paper-line {
-  stroke-width: 3px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
-}
 
 
 /* CONTENIDO TEXTO */
@@ -151,6 +134,7 @@ body {
     order: 1;
     /* Imagen a la izquierda */
     margin-bottom: 0;
+    filter: drop-shadow(10px 0 0px rgba(255, 255, 255, 1));
   }
 
   .hero-content {
@@ -162,17 +146,7 @@ body {
     background: transparent;
   }
 
-  .fracture-divider.horizontal {
-    display: none;
-  }
 
-  .fracture-divider.vertical {
-    display: block;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
 
   .hero-content h1 {
     font-size: 4.5rem;
@@ -183,11 +157,7 @@ body {
   }
 }
 
-@media (max-width: 767px) {
-  .fracture-divider.vertical {
-    display: none;
-  }
-}
+
 
 .hero-content h1 {
   font-family: 'Outfit', sans-serif;
@@ -469,8 +439,8 @@ body {
 
   .carousel-track {
     gap: 0;
-    /* Usamos un padding más generoso para empujar las laterales al centro */
-    padding: 30px 15%;
+    /* Padding ajustado para evitar margen lateral en mobile */
+    padding: 30px 10px;
   }
 
   .carousel-item {
