@@ -39,28 +39,55 @@
       </p>
 
       <a href="#" class="cta">Consultame!</a>
-    </div>
+
+      <div class="social-links">
+        <a href="https://www.instagram.com/estudio_chucky/" target="_blank" class="social-icon" aria-label="Instagram">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.5-2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" />
+          </svg>
+        </a>
+        <a href="https://wa.me/541136441945" target="_blank" class="social-icon" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+          </svg>
+        </a>
+      </div>
 
   </section>
 
   <section class="gallery-section" id="galeria">
-    <h2 class="gallery-title">Sesiones Recientes</h2>
+    <div class="gallery-header">
+      <h2 class="gallery-title">Un Tatuaje para llevar con orgullo</h2>
+      <p class="gallery-description">
+        Descubre piezas únicas donde el diseño limpio se encuentra con el arte permanente.
+        Cada tatuaje es una obra maestra diseñada exclusivamente para tu piel.
+      </p>
+    </div>
 
     <div class="carousel-container">
-      <button class="nav-btn prev" id="prevBtn" aria-label="Anterior">
-        <svg viewBox="0 0 24 24">
-          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-        </svg>
-      </button>
-
       <div class="carousel-track" id="carouselTrack">
+        <!-- Generando múltiples imágenes para el efecto -->
         <div class="carousel-item">
           <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item">
           <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
         </div>
-        <div class="carousel-item active">
+        <div class="carousel-item">
+          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+        </div>
+        <div class="carousel-item">
+          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+        </div>
+        <div class="carousel-item">
+          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+        </div>
+        <div class="carousel-item center-start">
+          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+        </div>
+        <div class="carousel-item">
           <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item">
@@ -70,14 +97,161 @@
           <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
         </div>
       </div>
+    </div>
 
-      <button class="nav-btn next" id="nextBtn" aria-label="Siguiente">
-        <svg viewBox="0 0 24 24">
-          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-        </svg>
-      </button>
+    <div class="gallery-buttons">
+      <a href="#" class="btn-gallery primary">Reservar cita</a>
+      <a href="#" class="btn-gallery secondary">Galeria completa</a>
     </div>
   </section>
+
+  </section>
+
+  <!-- PORTFOLIO SECTION -->
+  <section class="portfolio-section" id="portfolio">
+    <div class="portfolio-intro">
+      <h2 class="section-title">Mi Trabajo</h2>
+      <div class="portfolio-tabs">
+        <button class="tab-btn active" data-filter="all">Todos</button>
+        <button class="tab-btn" data-filter="tatuajes">Tatuajes</button>
+        <button class="tab-btn" data-filter="piercings">Piercings</button>
+        <button class="tab-btn" data-filter="micro">Micropigmentación</button>
+      </div>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      <!-- TATTOOS -->
+      <div class="portfolio-item" data-category="tatuajes">
+        <img src="photo.avif" alt="Tatuaje">
+        <div class="portfolio-overlay">
+          <span class="portfolio-text">Tattoo Art</span>
+        </div>
+      </div>
+      <div class="portfolio-item" data-category="tatuajes">
+        <img src="photo.avif" alt="Tatuaje">
+        <div class="portfolio-overlay">
+          <span class="portfolio-text">Design</span>
+        </div>
+      </div>
+      <div class="portfolio-item" data-category="tatuajes">
+        <img src="photo.avif" alt="Tatuaje">
+        <div class="portfolio-overlay">
+          <span class="portfolio-text">Ink</span>
+        </div>
+      </div>
+      <div class="portfolio-item" data-category="tatuajes">
+        <img src="photo.avif" alt="Tatuaje">
+        <div class="portfolio-overlay">
+          <span class="portfolio-text">Detail</span>
+        </div>
+      </div>
+
+      <!-- PIERCINGS -->
+      <div class="portfolio-item" data-category="piercings">
+        <img src="photo.avif" alt="Piercing">
+        <div class="portfolio-overlay">
+          <span class="portfolio-text">Piercing Love</span>
+        </div>
+      </div>
+      <div class="portfolio-item" data-category="piercings">
+        <img src="photo.avif" alt="Piercing">
+        <div class="portfolio-overlay">
+          <span class="portfolio-text">Shine</span>
+        </div>
+      </div>
+      <div class="portfolio-item" data-category="piercings">
+        <img src="photo.avif" alt="Piercing">
+        <div class="portfolio-overlay">
+          <span class="portfolio-text">Style</span>
+        </div>
+      </div>
+
+      <!-- MICRO -->
+      <div class="portfolio-item" data-category="micro">
+        <img src="photo.avif" alt="Micropigmentación">
+        <div class="portfolio-overlay">
+          <span class="portfolio-text">Micro</span>
+        </div>
+      </div>
+      <div class="portfolio-item" data-category="micro">
+        <img src="photo.avif" alt="Micropigmentación">
+        <div class="portfolio-overlay">
+          <span class="portfolio-text">Beauty</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="services-section" id="servicios">
+    <div class="services-intro">
+      <h2 class="section-title">Arte & Estética</h2>
+      <p class="section-text">
+        Este es un espacio pensado para embellecerte con arte.
+        Podés adornar tu cuerpo con brillo, colores, y darte vida...
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <!-- Card 1: Tatuajes -->
+      <div class="service-card">
+        <div class="card-icon">✒️</div>
+        <h3>Tatuajes</h3>
+        <p>Con los tatuajes podés tapar, realzar o simplemente plasmar en tu piel el recuerdo, la imagen o la frase que
+          te marcó de por vida.</p>
+        <div class="card-tags">
+          <span class="tag">En rojo y/o negro</span>
+          <span class="tag">Diferentes estilos</span>
+          <span class="tag">No realismo!</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Piercings -->
+      <div class="service-card">
+        <div class="card-icon">✨</div>
+        <h3>Piercings</h3>
+        <p>Con los piercings podés llenar de brillo y estilo tu cuerpo, desde las zonas menos visibles hasta tu rostro.
+          Nunca te olvides de brillar.</p>
+        <ul class="service-list">
+          <li>Labrets</li>
+          <li>Nostril style</li>
+          <li>Navel piercings</li>
+          <li>Venta de lociones</li>
+        </ul>
+      </div>
+
+      <!-- Card 3: Micropigmentación -->
+      <div class="service-card">
+        <div class="card-icon">👁️</div>
+        <h3>Micropigmentación</h3>
+        <p>Y con la micropigmentación podés corregir asimetrías, cambiar un tono, agregar detalles y estar siempre lista
+          para salir al mundo.</p>
+        <div class="card-tags">
+          <span class="tag">Belleza duradera</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h2 class="footer-logo">Estudio Chucky</h2>
+        <div class="footer-address">
+          <p>Félix Frías 2663</p>
+          <p>1688, B1686 Hurlingham</p>
+          <p>Provincia de Buenos Aires</p>
+        </div>
+      </div>
+      <div class="footer-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.002567975459!2d-58.64116192388671!3d-34.60409657295423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb9b19a8e5d07%3A0x7bba2b4fdad928a9!2sEstudio%20Chucky!5e0!3m2!1sen!2sar!4v1771185669822!5m2!1sen!2sar"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </footer>
 
   <script>
     const track = document.getElementById('carouselTrack');
@@ -85,74 +259,207 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
+    // 3D CAROUSEL LOGIC
+    let isTicking = false;
+
+    // DRAG VARIABLES
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let isDragging = false;
+
+    // DRAG EVENTS
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      track.classList.add('active');
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+      isDragging = false;
+    });
+
+    track.addEventListener('mouseleave', () => {
+      isDown = false;
+      track.classList.remove('active');
+    });
+
+    track.addEventListener('mouseup', () => {
+      isDown = false;
+      track.classList.remove('active');
+      if (isDragging) {
+        snapToClosest();
+      }
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      if (Math.abs(e.pageX - track.offsetLeft - startX) > 5) {
+        isDragging = true;
+      }
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = scrollLeft - walk;
+    });
+
     const updateCarousel = () => {
-      const trackRect = track.getBoundingClientRect();
-      const trackCenter = trackRect.left + trackRect.width / 2;
+      // Use metrics cached where possible or read efficiently
+      // Reading track values
+      const trackWidth = track.offsetWidth;
+      const trackCenter = track.scrollLeft + trackWidth / 2;
 
       items.forEach(item => {
-        const itemRect = item.getBoundingClientRect();
-        const itemCenter = itemRect.left + itemRect.width / 2;
-        const distanceFromCenter = Math.abs(trackCenter - itemCenter);
+        // We use offsetLeft which is relative to the track content
+        // This is much lighter than getBoundingClientRect()
+        const itemWidth = item.offsetWidth;
+        const itemCenter = item.offsetLeft + itemWidth / 2;
 
-        if (distanceFromCenter < itemRect.width / 2) {
+        // Calculate distance from center of the current view
+        const dist = itemCenter - trackCenter;
+
+        // Adjust range based on new gap
+        // Since we have gap=40px and width=280px (total ~320px per item)
+        // We want the effect to span about 1.5 to 2 items worth of distance
+        const maxDist = trackWidth / 1.2;
+
+        // Normalize distance (-1 to 1)
+        let normalized = dist / maxDist;
+
+        const absNorm = Math.abs(normalized);
+
+        // Scale: Increases as we go away from center
+        const scale = 0.85 + (absNorm * 0.3);
+
+        // RotateY: Rotates to face center
+        const rotate = -normalized * 25; // gentler rotation
+
+        // TranslateZ: Bring edges closer
+        const translateZ = absNorm * 50;
+
+        item.style.transform = `perspective(1000px) rotateY(${rotate}deg) scale(${scale}) translateZ(${translateZ}px)`;
+        item.style.zIndex = Math.round(100 - absNorm * 100);
+
+        // Styling active item (center)
+        const img = item.querySelector('img');
+        if (absNorm < 0.15) {
           item.classList.add('active');
+          img.style.borderColor = 'rgba(255, 79, 163, 0.9)';
+          img.style.boxShadow = '0 0 40px rgba(255, 79, 163, 0.4)';
         } else {
           item.classList.remove('active');
+          img.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+          img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
         }
       });
+
+      isTicking = false;
+    };
+
+    const snapToClosest = () => {
+      // Small delay to let momentum settle if any
+      setTimeout(() => {
+        let closestIdx = 0;
+        let minDiff = Infinity;
+        const trackCenter = track.scrollLeft + track.offsetWidth / 2;
+
+        items.forEach((item, idx) => {
+          const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+          const diff = Math.abs(trackCenter - itemCenter);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIdx = idx;
+          }
+        });
+
+        scrollToItem(closestIdx);
+      }, 50);
+    };
+
+    const onScroll = () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(updateCarousel);
+        isTicking = true;
+      }
     };
 
     const scrollToItem = (index) => {
+      if (index < 0 || index >= items.length) return;
       const item = items[index];
+      // Updated centering logic
       const scrollPos = item.offsetLeft - (track.offsetWidth / 2) + (item.offsetWidth / 2);
+
       track.scrollTo({
         left: scrollPos,
         behavior: 'smooth'
       });
     };
 
-    // Navegación por flechas
-    prevBtn.addEventListener('click', () => {
-      const activeIdx = Array.from(items).findIndex(i => i.classList.contains('active'));
-      if (activeIdx > 0) scrollToItem(activeIdx - 1);
-    });
-
-    nextBtn.addEventListener('click', () => {
-      const activeIdx = Array.from(items).findIndex(i => i.classList.contains('active'));
-      if (activeIdx < items.length - 1) scrollToItem(activeIdx + 1);
-    });
-
-    // Click en ítem para centrarlo
+    // Item click
     items.forEach((item, index) => {
-      item.addEventListener('click', () => scrollToItem(index));
+      item.addEventListener('click', (e) => {
+        if (isDragging) {
+          e.preventDefault();
+          return;
+        }
+        scrollToItem(index);
+      });
     });
 
-    track.addEventListener('scroll', updateCarousel);
+    // Valid Loop
+    track.addEventListener('scroll', onScroll, { passive: true });
+
+    // Init with slightly delayed call to ensure layout is ready
     window.addEventListener('load', () => {
-      const activeItem = document.querySelector('.carousel-item.active');
-      if (activeItem) {
-        const scrollPos = activeItem.offsetLeft - (track.offsetWidth / 2) + (activeItem.offsetWidth / 2);
-        track.scrollLeft = scrollPos;
-      }
-      updateCarousel();
+      setTimeout(() => {
+        const centerIndex = Math.floor(items.length / 2);
+        scrollToItem(centerIndex);
+        updateCarousel();
+      }, 100);
     });
 
-    // GENERAR ESTRELLAS
+    // Also update on resize
+    window.addEventListener('resize', () => {
+      requestAnimationFrame(updateCarousel);
+    });
+
+    // PORTFOLIO FILTERING
+    const filterBtns = document.querySelectorAll('.tab-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // remove active class from all
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // add to clicked
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        portfolioItems.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+            item.classList.remove('hidden');
+            // trigger reflow for animation
+            void item.offsetWidth;
+            item.style.animation = 'none';
+            setTimeout(() => {
+              item.style.animation = 'fadeIn 0.5s ease forwards';
+            }, 10);
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // GENERAR ESTRELLAS (Mantenido)
     const starsContainer = document.getElementById('stars');
-    const starCount = 150;
+    const starCount = 100; // Reduced slighty for performance if needed
     for (let i = 0; i < starCount; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      const size = Math.random() * 2 + 1;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-      star.style.animationDelay = `${Math.random() * 2}s`;
+      const star = document.createElement('div'); star.className = 'star'; const
+        size = Math.random() * 2 + 1; star.style.width = `${size}px`; star.style.height = `${size}px`;
+      star.style.left = `${Math.random() * 100}%`; star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${Math.random() * 3 + 2}s`; star.style.animationDelay = `${Math.random() * 2}s`;
       starsContainer.appendChild(star);
-    }
-  </script>
+    } </script>
 
 
 </body>
