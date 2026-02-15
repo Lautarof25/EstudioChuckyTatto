@@ -13,6 +13,104 @@ body {
   overflow-x: hidden;
 }
 
+/* NAVIGATION MENU */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(13, 13, 15, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 79, 163, 0.1);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff4fa3, #ff79c6);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.cta-nav {
+  background: linear-gradient(90deg, #ff4fa3, #ff79c6);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+}
+
+.nav-link.cta-nav:hover {
+  box-shadow: 0 0 20px rgba(255, 79, 163, 0.4);
+}
+
+.nav-link.cta-nav::after {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 1rem;
+  }
+
+  .nav-logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-menu {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+}
+
 /* HERO */
 .hero {
   min-height: 100vh;
@@ -21,6 +119,7 @@ body {
   position: relative;
   overflow: hidden;
   background: radial-gradient(circle at center, #1a1b26 0%, #0d0d0f 100%);
+  padding-top: 0;
 }
 
 .stars-container {
