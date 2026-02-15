@@ -1,4 +1,4 @@
-# EstudioChuckyTatto
+# EstudioChuckyTattoo
 ## 🎯 Objetivo
 
 Crear dos versiones de landing page **one‑page** para una tatuadora,
