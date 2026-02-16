@@ -129,7 +129,7 @@
 
     <div class="gallery-buttons">
       <a href="#" class="btn-gallery primary">Reservar cita</a>
-      <a href="#" class="btn-gallery secondary">Galeria completa</a>
+      <a href="#portfolio" class="btn-gallery secondary">Galeria completa</a>
     </div>
   </section>
 
@@ -508,6 +508,39 @@
       });
     });
 
+    // Lightbox for desktop portfolio
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+
+      if (lightbox && portfolioItems.length > 0) {
+        portfolioItems.forEach(item => {
+          item.addEventListener('click', (e) => {
+            const img = item.querySelector('img');
+            if (img) {
+              lightboxImg.src = img.src;
+              lightboxImg.alt = img.alt;
+              lightbox.classList.add('active');
+              document.body.style.overflow = 'hidden';
+            }
+          });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+    });
+
     // MOBILE GALLERY FUNCTIONALITY (Portfolio section)
     const isMobile = () => window.innerWidth <= 768;
     let isInitialLoad = true;
@@ -593,6 +626,12 @@
       });
     });
   </script>
+
+  <!-- Lightbox for desktop portfolio -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  </div>
 
 </body>
 
