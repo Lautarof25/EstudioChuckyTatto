@@ -510,6 +510,7 @@
 
     // MOBILE GALLERY FUNCTIONALITY (Portfolio section)
     const isMobile = () => window.innerWidth <= 768;
+    let isInitialLoad = true;
 
     const initMobileGallery = () => {
       if (!mobileThumbnails || !mobileMainImg) return;
@@ -549,9 +550,10 @@
 
       // Scroll thumbnail into view
       const activeThumb = thumbnails[currentMobileIndex];
-      if (activeThumb) {
+      if (activeThumb && !isInitialLoad) {
         activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       }
+      isInitialLoad = false;
     };
 
     // Initialize mobile gallery on load
