@@ -12,6 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;900&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@1,500;1,700&family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="stars.css" />
 </head>
 
 <body>
@@ -57,7 +58,7 @@
 
     <!-- CONTENIDO -->
     <div class="hero-content">
-      <h1>Estudio <span>—</span> Chucky</h1>
+      <h1>Estudio Chucky <br><span>—</span>Tattoo</h1>
       <h2>Convertir tu idea en arte</h2>
 
       <p>
@@ -87,6 +88,8 @@
   </section>
 
   <section class="gallery-section" id="galeria">
+    <div class="stars-container" id="stars-gallery"></div>
+
     <div class="gallery-header">
       <h2 class="gallery-title">Transformá tu piel hoy!</h2>
       <p class="gallery-description">
@@ -98,31 +101,31 @@
       <div class="carousel-track" id="carouselTrack">
         <!-- Generando múltiples imágenes para el efecto -->
         <div class="carousel-item">
-          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+          <img src="./images/cruzAlas.webp" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item">
-          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+          <img src="./images/corazonpanza1.webp" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item">
-          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+          <img src="./images/corazon1.webp" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item">
-          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+          <img src="./images/rosaPierna.webp" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item">
-          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+          <img src="./images/principal.jpg" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item center-start">
-          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+          <img src="./images/tattoopanza1.webp" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item">
-          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+          <img src="./images/dragon.webp" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item">
-          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+          <img src="./images/cursivaCuello.webp" alt="Sesión de tatuaje" class="gallery-img">
         </div>
         <div class="carousel-item">
-          <img src="photo.avif" alt="Sesión de tatuaje" class="gallery-img">
+          <img src="./images/cursivaClavicula.webp" alt="Sesión de tatuaje" class="gallery-img">
         </div>
       </div>
     </div>
@@ -613,6 +616,21 @@
       star.style.left = `${Math.random() * 100}%`; star.style.top = `${Math.random() * 100}%`;
       star.style.animationDuration = `${Math.random() * 3 + 2}s`; star.style.animationDelay = `${Math.random() * 2}s`;
       starsContainer.appendChild(star);
+    }
+
+    // GENERAR ESTRELLAS PARA LA GALERÍA
+    const starsGallery = document.getElementById('stars-gallery');
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      star.style.animationDelay = `${Math.random() * 2}s`;
+      starsGallery.appendChild(star);
     } </script>
 
   <!-- Close mobile menu when a link is clicked -->

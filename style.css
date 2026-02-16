@@ -344,7 +344,7 @@ img {
     order: 1;
     /* Imagen a la izquierda */
     margin-bottom: 0;
-    filter: drop-shadow(10px 0 0px rgba(255, 255, 255, 1));
+    filter: drop-shadow(3px 0 0px rgba(255, 255, 255, 1));
   }
 
   .hero-content {
@@ -479,7 +479,7 @@ img {
 
 @media (min-width: 768px) {
   .hero-content h1 {
-    font-size: 5.5rem;
+    font-size: 4.5rem;
     margin-bottom: 2rem;
   }
 
@@ -508,6 +508,15 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+#stars-gallery {
+  z-index: 10;
+}
+
+.carousel-container {
+  z-index: 20;
 }
 
 .gallery-title {
@@ -598,8 +607,6 @@ img {
   position: relative;
   /* Efecto lateral: un poco más grande y desvanecido */
   transform: scale(1.1);
-  opacity: 0.5;
-  filter: blur(2px) grayscale(0.4);
   z-index: 1;
 }
 
