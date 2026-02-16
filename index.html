@@ -473,8 +473,9 @@
     // Init with slightly delayed call to ensure layout is ready
     window.addEventListener('load', () => {
       setTimeout(() => {
-        const centerIndex = Math.floor(items.length / 2);
-        scrollToItem(centerIndex);
+        const isMobile = window.innerWidth <= 768;
+        const startIndex = isMobile ? 0 : Math.floor(items.length / 2);
+        scrollToItem(startIndex);
         updateCarousel();
       }, 100);
     });
