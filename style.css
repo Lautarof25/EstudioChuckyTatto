@@ -543,7 +543,7 @@ img {
 
 .carousel-track {
   display: flex;
-  overflow-x: auto;
+  overflow: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   gap: 40px;
