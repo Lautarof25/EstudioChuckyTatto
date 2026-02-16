@@ -19,6 +19,12 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">Estudio Chucky</div>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
       <ul class="nav-menu">
         <li class="nav-item">
           <a href="#galeria" class="nav-link">Galería</a>
@@ -498,6 +504,17 @@
       starsContainer.appendChild(star);
     } </script>
 
+  <!-- Close mobile menu when a link is clicked -->
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.checked = false;
+      });
+    });
+  </script>
 
 </body>
 
