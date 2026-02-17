@@ -38,6 +38,9 @@
           <a href="#servicios" class="nav-link">Servicios</a>
         </li>
         <li class="nav-item">
+          <a href="#info" class="nav-link">Info</a>
+        </li>
+        <li class="nav-item">
           <a href="#" class="nav-link cta-nav">Contacto</a>
         </li>
       </ul>
@@ -308,6 +311,68 @@
     </div>
   </section>
 
+  <!-- INFO SECTION -->
+  <section class="info-section" id="info">
+    <div class="stars-container" id="stars-info"></div>
+    <div class="info-container">
+      <h2 class="section-title">Información</h2>
+      <div class="info-tabs">
+        <button class="info-tab active" data-tab="presupuesto">Presupuesto</button>
+        <button class="info-tab" data-tab="cuidados">Cuidados Post-Tattoo</button>
+        <button class="info-tab" data-tab="estaciones">Tattoos y Estaciones</button>
+        <button class="info-tab" data-tab="jabon">¿Por qué no Jabón Blanco?</button>
+      </div>
+      <div class="info-content">
+        <div class="info-panel active" id="presupuesto">
+          <h3>¿Cómo obtener un presupuesto?</h3>
+          <p>Para conocer el costo de un tattoo se deberá indicar:</p>
+          <ol class="info-list">
+            <li><span class="info-number">01</span> Idea del tatuaje y estilo</li>
+            <li><span class="info-number">02</span> Tamaño aproximado del diseño en cm</li>
+            <li><span class="info-number">03</span> Zona del cuerpo donde se desea tatuar</li>
+            <li><span class="info-number">04</span> De ser posible, mandar imagen de referencia</li>
+            <li><span class="info-number">05</span> Una vez hablado todo se deberá abonar la seña (sin excepción) para guardar el turno y así empezar a preparar el diseño</li>
+          </ol>
+          <a href="https://wa.me/541136441945" target="_blank" class="cta info-cta">Consultar Ahora</a>
+        </div>
+        <div class="info-panel" id="cuidados">
+          <h3>Cuidados del Tattoo</h3>
+          <p class="info-subtitle">Como curar tu tatuaje</p>
+          <ul class="info-list">
+            <li><span class="info-number">01</span> Sacar el film luego de 2 o 3hs</li>
+            <li><span class="info-number">02</span> Lavar con jabón neutro y secar presionando con una servilleta (no en modo de arrastre)</li>
+            <li><span class="info-number">03</span> Colocar una fina capa de Dermaglós Emulsión 4 o 5 veces por día. No empapar</li>
+            <li><span class="info-number">04</span> No rascar ni dejar seco</li>
+            <li><span class="info-number">05</span> No exponer al sol. De ser así colocar protector solar</li>
+            <li><span class="info-number">06</span> Colocar crema + film para dormir</li>
+            <li><span class="info-number">07</span> Curar todo el tiempo indicado y nunca colocarle al tattoo otro producto</li>
+          </ul>
+        </div>
+        <div class="info-panel" id="estaciones">
+          <h3>Tattoos y Estaciones</h3>
+          <div class="estaciones-content">
+            <p>El sol es perjudicial (y más para los tatuajes recién hechos) ya que deteriora los pigmentos. Cuanto menos expuesto esté el tattoo al sol directo, mejor cicatrizará.</p>
+            <p>No hay nada mejor que dejar respirar el tattoo para mantenerlo fresco y libre de transpiración, por eso siempre se recomienda hacerse tatuajes en temporadas donde baja el calor.</p>
+            <p>Tampoco se recomienda tatuarse en verano ya que nos metemos al mar, piletas y ríos, 3 tentaciones que dificultan la cicatrización del tattoo.</p>
+            <p class="estaciones-conclusion">Ahora ya sabés cómo aprovechar el invierno y el otoño</p>
+          </div>
+        </div>
+        <div class="info-panel" id="jabon">
+          <h3>¿Por qué no usar Jabón Blanco?</h3>
+          <p class="jabon-subtitle">Motivos por los cuales no se recomienda lavar los tatuajes con jabón en pan:</p>
+          <ul class="info-list">
+            <li><span class="info-number">01</span> No está diseñado para usar sobre la piel</li>
+            <li><span class="info-number">02</span> Contiene químicos altamente irritantes y agresivos</li>
+            <li><span class="info-number">03</span> Modifica el pH natural de la piel, no es neutro</li>
+            <li><span class="info-number">04</span> Reseca la piel ya que no contiene humectantes</li>
+            <li><span class="info-number">05</span> No es un cosmético sino que quitamanchas</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-bg-shapes">
@@ -573,6 +638,26 @@
       }
     };
 
+    // INFO TABS
+    const infoTabs = document.querySelectorAll('.info-tab');
+    const infoPanels = document.querySelectorAll('.info-panel');
+
+    infoTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetTab = tab.getAttribute('data-tab');
+        
+        infoTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        infoPanels.forEach(panel => {
+          panel.classList.remove('active');
+          if (panel.id === targetTab) {
+            panel.classList.add('active');
+          }
+        });
+      });
+    });
+
     // STARS GENERATION
     const generateStars = (containerId, count) => {
       const container = document.getElementById(containerId);
@@ -611,6 +696,7 @@
       // Stars
       generateStars('stars', 100);
       generateStars('stars-gallery', 80);
+      generateStars('stars-info', 50);
     });
 
     window.addEventListener('resize', () => {

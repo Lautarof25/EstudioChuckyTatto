@@ -1320,6 +1320,205 @@ img {
   display: block;
 }
 
+.info-section {
+  padding: 6rem 20px;
+  background: linear-gradient(180deg, #0d0d0f 0%, #1a1a2e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.info-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.info-tab {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 79, 163, 0.2);
+  border-radius: 30px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.info-tab:hover {
+  background: rgba(255, 79, 163, 0.1);
+  color: #fff;
+}
+
+.info-tab.active {
+  background: linear-gradient(45deg, #ff4fa3, #9b4dca);
+  border-color: transparent;
+  color: #fff;
+  font-weight: 600;
+}
+
+.info-content {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2.5rem;
+}
+
+.info-panel {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.info-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.info-panel h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.info-subtitle {
+  color: rgba(255, 79, 163, 0.8) !important;
+  font-style: italic;
+  margin-bottom: 1.5rem !important;
+  text-align: center;
+}
+
+.jabon-subtitle {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  text-align: center;
+}
+
+.info-panel p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+}
+
+.info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.info-list li:last-child {
+  border-bottom: none;
+}
+
+.info-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  background: linear-gradient(45deg, #ff4fa3, #9b4dca);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+.info-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 14px 35px;
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.faq-item h4 {
+  color: #ff4fa3;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.faq-item p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.estaciones-content p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.estaciones-content p:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.instagram-mention {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.instagram-mention a {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-radius: 25px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instagram-mention a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(225, 48, 108, 0.4);
+}
+
+.estaciones-conclusion {
+  text-align: center !important;
+  font-weight: 600;
+  font-size: 1.1rem !important;
+  color: #ff4fa3 !important;
+  margin-bottom: 0 !important;
+}
+
 /* PORTFOLIO GALLERY */
 .portfolio-section {
   padding: 6rem 20px;
@@ -1822,6 +2021,46 @@ img {
 }
 
 @media (max-width: 768px) {
+  .info-section {
+    padding: 4rem 15px;
+  }
+
+  .info-tabs {
+    gap: 8px;
+  }
+
+  .info-tab {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .info-content {
+    padding: 1.5rem;
+  }
+
+  .info-panel h3 {
+    font-size: 1.25rem;
+  }
+
+  .info-list li {
+    font-size: 0.9rem;
+    gap: 12px;
+  }
+
+  .info-number {
+    min-width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  .estaciones-content p {
+    font-size: 0.95rem;
+  }
+
+  .estaciones-conclusion {
+    font-size: 1rem !important;
+  }
+
   .floating-whatsapp {
     bottom: 20px;
     right: 20px;
