@@ -729,6 +729,8 @@
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filterValue = btn.getAttribute('data-filter');
+        
+        // Filter desktop grid
         portfolioItems.forEach(item => {
           if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
             item.classList.remove('hidden');
@@ -741,6 +743,38 @@
             item.classList.add('hidden');
           }
         });
+        
+        // Filter mobile gallery
+        if (isMobileView() && mobileThumbnails) {
+          currentMobileIndex = 0;
+          const visibleItems = Array.from(portfolioItems).filter(item => 
+            filterValue === 'all' || item.getAttribute('data-category') === filterValue
+          );
+          
+          mobileThumbnails.innerHTML = '';
+          visibleItems.forEach((item, index) => {
+            const img = item.querySelector('img');
+            const thumbnail = document.createElement('div');
+            thumbnail.className = 'mobile-thumbnail' + (index === 0 ? ' active' : '');
+            thumbnail.innerHTML = `<img src="${img.src}" alt="Thumbnail ${index + 1}">`;
+            thumbnail.addEventListener('click', () => {
+              currentMobileIndex = index;
+              const currentVisible = Array.from(mobileThumbnails.querySelectorAll('.mobile-thumbnail'));
+              currentVisible.forEach(t => t.classList.remove('active'));
+              thumbnail.classList.add('active');
+              mobileMainImg.src = img.src;
+              mobileMainImg.alt = img.alt;
+            });
+            mobileThumbnails.appendChild(thumbnail);
+          });
+          
+          // Update main image to first visible item
+          if (visibleItems.length > 0) {
+            const firstImg = visibleItems[0].querySelector('img');
+            mobileMainImg.src = firstImg.src;
+            mobileMainImg.alt = firstImg.alt;
+          }
+        }
       });
     });
 
