@@ -2267,9 +2267,270 @@ img {
   transform: scale(1.2);
 }
 
-.cobertura-dots .dot:hover {
-  background: rgba(255, 79, 163, 0.5);
-}
+  .cobertura-dots .dot:hover {
+    background: rgba(255, 79, 163, 0.5);
+  }
+
+  /* MEDIDA TATTOOS PANEL */
+  .medida-content {
+    text-align: center;
+  }
+
+  .medida-img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(255, 79, 163, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .medida-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+
+  /* ABOUT ME SECTION */
+  .about-section {
+    padding: 6rem 20px;
+    background: linear-gradient(180deg, #0d0d0f 0%, #1a1a2e 50%, #0d0d0f 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-image-wrapper {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+    border: 3px solid rgba(255, 79, 163, 0.4);
+    box-shadow: 0 0 40px rgba(255, 79, 163, 0.3), 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .about-image-wrapper:hover .about-image {
+    transform: scale(1.1);
+  }
+
+  .about-image-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(255, 79, 163, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+  }
+
+  .about-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .about-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+
+  .about-shape.shape-1 {
+    width: 100px;
+    height: 100px;
+    background: #ff4fa3;
+    top: 10%;
+    left: 5%;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .about-shape.shape-2 {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #9b4dca;
+    bottom: 20%;
+    right: 10%;
+    animation: float 8s ease-in-out infinite reverse;
+  }
+
+  .about-shape.shape-3 {
+    width: 40px;
+    height: 40px;
+    background: #ff79c6;
+    bottom: 10%;
+    left: 15%;
+    animation: float 5s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  .about-content {
+    padding: 20px 0;
+  }
+
+  .about-content .section-title {
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fff, #ff4fa3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .about-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: rgba(255, 79, 163, 0.9);
+    margin-bottom: 2rem;
+  }
+
+  .about-description {
+    margin-bottom: 2rem;
+  }
+
+  .about-description p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-services h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .about-services-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 2rem;
+  }
+
+  .about-services-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 79, 163, 0.2);
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  .about-services-list li:hover {
+    background: rgba(255, 79, 163, 0.1);
+    border-color: rgba(255, 79, 163, 0.5);
+    transform: translateY(-3px);
+  }
+
+  .service-icon {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 900px) {
+    .about-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .about-content .section-title {
+      text-align: center;
+    }
+
+    .about-image-wrapper {
+      width: 280px;
+      height: 280px;
+    }
+
+    .about-image-glow {
+      width: 300px;
+      height: 300px;
+    }
+
+    .about-services-list {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-section {
+      padding: 4rem 15px;
+    }
+
+    .about-name {
+      font-size: 2rem;
+    }
+
+    .about-tagline {
+      font-size: 1.1rem;
+    }
+
+    .about-description p {
+      font-size: 1rem;
+    }
+
+    .about-services-list {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .about-services-list li {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+    }
+  }
 
 @media (max-width: 768px) {
   .cobertura-section {
