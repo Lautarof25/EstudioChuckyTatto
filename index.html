@@ -822,16 +822,65 @@
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightboxImg');
       const lightboxClose = document.getElementById('lightboxClose');
+      const zoomIn = document.getElementById('lightboxZoomIn');
+      const zoomOut = document.getElementById('lightboxZoomOut');
+      const zoomReset = document.getElementById('lightboxReset');
+      
+      let currentScale = 1;
+      let isDragging = false;
+      let startX, startY, translateX = 0, translateY = 0;
+
+      const resetZoom = () => {
+        currentScale = 1;
+        translateX = 0;
+        translateY = 0;
+        lightboxImg.style.transform = 'translate(0, 0) scale(1)';
+        lightboxImg.classList.remove('zoomed');
+      };
+
+      const openLightbox = (img) => {
+        resetZoom();
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
 
       if (lightbox) {
+        // Portfolio items
         portfolioItems.forEach(item => {
           item.addEventListener('click', () => {
             const img = item.querySelector('img');
             if (img && !isMobileView()) {
-              lightboxImg.src = img.src;
-              lightboxImg.alt = img.alt;
-              lightbox.classList.add('active');
-              document.body.style.overflow = 'hidden';
+              openLightbox(img);
+            }
+          });
+        });
+
+        // Gallery images (carousel) - only active/image central
+        const galleryImages = document.querySelectorAll('.carousel-item .gallery-img');
+        galleryImages.forEach(img => {
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', (e) => {
+            if (!isMobileView()) {
+              const carouselItem = img.closest('.carousel-item');
+              if (carouselItem && carouselItem.classList.contains('active')) {
+                e.stopPropagation();
+                openLightbox(img);
+              }
+            }
+          });
+        });
+
+        // Also allow clicking on carousel items directly - only active
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        carouselItems.forEach(item => {
+          item.addEventListener('click', (e) => {
+            if (!isMobileView() && item.classList.contains('active')) {
+              const img = item.querySelector('img');
+              if (img) {
+                openLightbox(img);
+              }
             }
           });
         });
@@ -839,13 +888,73 @@
         lightboxClose.addEventListener('click', () => {
           lightbox.classList.remove('active');
           document.body.style.overflow = '';
+          resetZoom();
         });
 
         lightbox.addEventListener('click', (e) => {
           if (e.target === lightbox) {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
+            resetZoom();
           }
+        });
+
+        // Zoom controls
+        zoomIn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          currentScale = Math.min(currentScale + 0.5, 4);
+          lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+          lightboxImg.classList.add('zoomed');
+        });
+
+        zoomOut.addEventListener('click', (e) => {
+          e.stopPropagation();
+          currentScale = Math.max(currentScale - 0.5, 0.5);
+          lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+          if (currentScale === 1) {
+            lightboxImg.classList.remove('zoomed');
+          }
+        });
+
+        zoomReset.addEventListener('click', (e) => {
+          e.stopPropagation();
+          resetZoom();
+        });
+
+        // Scroll zoom
+        lightboxImg.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          const delta = e.deltaY > 0 ? -0.2 : 0.2;
+          currentScale = Math.max(0.5, Math.min(currentScale + delta, 4));
+          lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+          lightboxImg.classList.toggle('zoomed', currentScale > 1);
+        });
+
+        // Drag to pan
+        lightboxImg.addEventListener('mousedown', (e) => {
+          if (currentScale > 1) {
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            lightboxImg.style.cursor = 'grabbing';
+          }
+        });
+
+        lightboxImg.addEventListener('mousemove', (e) => {
+          if (isDragging && currentScale > 1) {
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+          }
+        });
+
+        lightboxImg.addEventListener('mouseup', () => {
+          isDragging = false;
+          lightboxImg.style.cursor = currentScale > 1 ? 'grab' : 'pointer';
+        });
+
+        lightboxImg.addEventListener('mouseleave', () => {
+          isDragging = false;
         });
       }
     };
@@ -1009,10 +1118,15 @@
     </svg>
   </a>
 
-  <!-- Lightbox for desktop portfolio -->
+  <!-- Lightbox for gallery and portfolio -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightboxClose">&times;</span>
     <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-controls">
+      <button class="lightbox-zoom-in" id="lightboxZoomIn">+</button>
+      <button class="lightbox-zoom-out" id="lightboxZoomOut">−</button>
+      <button class="lightbox-reset" id="lightboxReset">⟲</button>
+    </div>
   </div>
 
 </body>
