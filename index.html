@@ -887,9 +887,13 @@
         const mobileMainImg = document.getElementById('mobileMainImg');
         if (mobileMainImg) {
           mobileMainImg.style.cursor = 'zoom-in';
-          mobileMainImg.addEventListener('click', () => {
+          const handleMobileClick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             openLightbox(mobileMainImg);
-          });
+          };
+          mobileMainImg.addEventListener('click', handleMobileClick);
+          mobileMainImg.addEventListener('touchend', handleMobileClick);
         }
 
         lightboxClose.addEventListener('click', () => {

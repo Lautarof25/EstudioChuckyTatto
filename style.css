@@ -1681,6 +1681,14 @@ img {
   object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 0 50px rgba(255, 79, 163, 0.3);
+  touch-action: pan-x pan-y;
+}
+
+@media (max-width: 768px) {
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 80vh;
+  }
 }
 
 .lightbox-close {
@@ -1760,6 +1768,8 @@ img {
     border-radius: 20px;
     border: 2px solid rgba(255, 79, 163, 0.6);
     box-shadow: 0 0 30px rgba(255, 79, 163, 0.2);
+    cursor: zoom-in;
+    touch-action: manipulation;
   }
 
   .mobile-thumbnails {
@@ -2015,6 +2025,7 @@ img {
 
   .mobile-main-photo .gallery-img {
     aspect-ratio: 3 / 4;
+    cursor: zoom-in;
   }
 
   .mobile-thumbnail {
