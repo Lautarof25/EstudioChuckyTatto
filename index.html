@@ -851,7 +851,7 @@
         portfolioItems.forEach(item => {
           item.addEventListener('click', () => {
             const img = item.querySelector('img');
-            if (img && !isMobileView()) {
+            if (img) {
               openLightbox(img);
             }
           });
@@ -862,12 +862,10 @@
         galleryImages.forEach(img => {
           img.style.cursor = 'zoom-in';
           img.addEventListener('click', (e) => {
-            if (!isMobileView()) {
-              const carouselItem = img.closest('.carousel-item');
-              if (carouselItem && carouselItem.classList.contains('active')) {
-                e.stopPropagation();
-                openLightbox(img);
-              }
+            const carouselItem = img.closest('.carousel-item');
+            if (carouselItem && carouselItem.classList.contains('active')) {
+              e.stopPropagation();
+              openLightbox(img);
             }
           });
         });
@@ -876,7 +874,7 @@
         const carouselItems = document.querySelectorAll('.carousel-item');
         carouselItems.forEach(item => {
           item.addEventListener('click', (e) => {
-            if (!isMobileView() && item.classList.contains('active')) {
+            if (item.classList.contains('active')) {
               const img = item.querySelector('img');
               if (img) {
                 openLightbox(img);
@@ -884,6 +882,15 @@
             }
           });
         });
+
+        // Mobile gallery main image click
+        const mobileMainImg = document.getElementById('mobileMainImg');
+        if (mobileMainImg) {
+          mobileMainImg.style.cursor = 'zoom-in';
+          mobileMainImg.addEventListener('click', () => {
+            openLightbox(mobileMainImg);
+          });
+        }
 
         lightboxClose.addEventListener('click', () => {
           lightbox.classList.remove('active');
@@ -921,7 +928,7 @@
           resetZoom();
         });
 
-        // Scroll zoom
+        // Scroll zoom (desktop)
         lightboxImg.addEventListener('wheel', (e) => {
           e.preventDefault();
           const delta = e.deltaY > 0 ? -0.2 : 0.2;
@@ -930,7 +937,7 @@
           lightboxImg.classList.toggle('zoomed', currentScale > 1);
         });
 
-        // Drag to pan
+        // Drag to pan (desktop)
         lightboxImg.addEventListener('mousedown', (e) => {
           if (currentScale > 1) {
             isDragging = true;
@@ -955,6 +962,47 @@
 
         lightboxImg.addEventListener('mouseleave', () => {
           isDragging = false;
+        });
+
+        // Touch support for mobile (pinch to zoom)
+        let touchStartDistance = 0;
+        let touchStartScale = 1;
+
+        lightboxImg.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 2) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            touchStartDistance = Math.sqrt(dx * dx + dy * dy);
+            touchStartScale = currentScale;
+          } else if (e.touches.length === 1 && currentScale > 1) {
+            isDragging = true;
+            startX = e.touches[0].clientX - translateX;
+            startY = e.touches[0].clientY - translateY;
+          }
+        }, { passive: true });
+
+        lightboxImg.addEventListener('touchmove', (e) => {
+          if (e.touches.length === 2) {
+            e.preventDefault();
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const scale = (distance / touchStartDistance) * touchStartScale;
+            currentScale = Math.max(0.5, Math.min(scale, 4));
+            lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+            lightboxImg.classList.toggle('zoomed', currentScale > 1);
+          } else if (e.touches.length === 1 && isDragging && currentScale > 1) {
+            translateX = e.touches[0].clientX - startX;
+            translateY = e.touches[0].clientY - startY;
+            lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+          }
+        }, { passive: false });
+
+        lightboxImg.addEventListener('touchend', () => {
+          isDragging = false;
+          if (currentScale <= 1) {
+            resetZoom();
+          }
         });
       }
     };
