@@ -896,14 +896,48 @@
         };
 
         el.addEventListener('click', handler);
+
+        // Touch handling with scroll detection
+        let touchStartY = 0;
+        let touchStartX = 0;
+        let touchMoved = false;
+        const touchThreshold = 10; // pixels of movement to consider it a scroll
+
+        el.addEventListener('touchstart', (e) => {
+          if (!condition()) return;
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          touchMoved = false;
+        }, { passive: true });
+
+        el.addEventListener('touchmove', (e) => {
+          if (!condition()) return;
+          const touchX = e.touches[0].clientX;
+          const touchY = e.touches[0].clientY;
+          const deltaX = Math.abs(touchX - touchStartX);
+          const deltaY = Math.abs(touchY - touchStartY);
+
+          // If moved more than threshold, consider it a scroll
+          if (deltaX > touchThreshold || deltaY > touchThreshold) {
+            touchMoved = true;
+          }
+        }, { passive: true });
+
         el.addEventListener('touchend', (e) => {
           if (!condition()) return;
-          if (e.cancelable) e.preventDefault();
-          e.stopPropagation();
-          const imgToOpen = getImgEl ? getImgEl() : el;
-          if (imgToOpen && imgToOpen.src) {
-            openLightbox(imgToOpen);
+
+          // Only open modal if it wasn't a scroll gesture
+          if (!touchMoved) {
+            if (e.cancelable) e.preventDefault();
+            e.stopPropagation();
+            const imgToOpen = getImgEl ? getImgEl() : el;
+            if (imgToOpen && imgToOpen.src) {
+              openLightbox(imgToOpen);
+            }
           }
+
+          // Reset state
+          touchMoved = false;
         }, { passive: false });
       };
 
